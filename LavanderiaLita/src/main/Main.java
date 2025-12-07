@@ -2,6 +2,7 @@ package main;
 
 import Screen.IScreen;
 import Screen.ScreenCliente;
+import Screen.ScreenFuncionario;
 import java.util.Scanner;
 
 /**
@@ -15,10 +16,15 @@ public class Main {
         // -c <Username> --ask -> Loga como cliente depois de perguntar a senha
         // -f <Username> -p <Senha> -> Loga como funcioanário
         // -f <Username> --ask -> Loga como funcionário depois de perguntar a senha
+        
+        /*//Para Debug
         for(int i = 0; i < args.length; i++){
             System.out.println(args[i]);
         }
-        
+        */
+        String username = "";
+        String password = "";
+        IScreen screen;
         switch (args[0]) {
             case "-h":
                 System.out.println("-h -> Mostra os Comandos\n" +
@@ -28,30 +34,55 @@ public class Main {
                                    "-f <Username> --ask -> Loga como funcionário depois de perguntar a senha");
                 break;
             case "-c":
-                String username = "";
-                String password = "";
                 username = args[1];
-                if(args[2].equals("-p")) password = args[3];
-                else if(args[2].equals("--ask")){
-                    Scanner sc = new Scanner(System.in);
-                    password = sc.nextLine();
-                    sc.close();
-                }else{
-                    System.out.println("Ops, something it`s wrong. try the comand -h for check the comand list.");
+                try{
+                    if(args[2].equals("-p")) password = args[3];
+                    else if(args[2].equals("--ask")){
+                        Scanner sc = new Scanner(System.in);
+                        password = sc.nextLine();
+                        sc = null; // desabilitar scanner
+                    }else{
+                        System.out.println("Ops, alguma coisa está errada, de o comando -h para listar os comandos");
+                        break;
+                    }
+                }catch(Exception e){
+                    System.out.println("Ops, alguma coisa está errada, de o comando -h para listar os comandos");
                     break;
                 }
                 // Check User
                 // Method for search the user
                 
                 //Before aproved
-                IScreen screen = new ScreenCliente();
+                screen = new ScreenCliente();
                 screen.initScreen(new String[] {username});
                 break;
-            case "-f":    
+            case "-f":
+                username = args[1];
+                try{
+                    if(args[2].equals("-p")) password = args[3];
+                    else if(args[2].equals("--ask")){
+                        Scanner sc = new Scanner(System.in);
+                        password = sc.nextLine();
+                        sc = null; // desabilitar scanner
+                    }else{
+                        System.out.println("Ops, alguma coisa está errada, de o comando -h para listar os comandos");
+                        break;
+                    }
+                }catch(Exception e){
+                    System.out.println("Ops, alguma coisa está errada, de o comando -h para listar os comandos");
+                    break;
+                }
+                // Check User
+                // Method for search the user
+                
+                //Before aproved
+                screen = new ScreenFuncionario();
+                screen.initScreen(new String[] {username});
                 break;
             default:
                 throw new AssertionError();
         }
     }
+    
     
 }

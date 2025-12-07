@@ -56,7 +56,16 @@ public abstract class Screen {
         comandsOptions[numOp].run();
     }
     
-    protected abstract void printMenu();
+    protected void logoLita(){
+        System.out.println("\r|>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|");
+        System.out.println("\r|       _        _  * _______    _______     * |");
+        System.out.println("\r|  *   | |      | |  |__   __|  |  ___ *|      |");
+        System.out.println("\r|      | |      | |     | |     | |   | |      |");
+        System.out.println("\r|    * | |      | |     | |     | |___| |  *   |");
+        System.out.println("\r|      | |___   | |  *  | |     |  ___  |      |");
+        System.out.println("\r|      |_____|  |_|     |_|  *  |_|   |_|      |");
+        System.out.println("\r|>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|");
+    }
     
     
     // Linux/Mac – modo raw
@@ -67,4 +76,6 @@ public abstract class Screen {
     static void disableRawMode() throws IOException, InterruptedException {
         new ProcessBuilder("sh", "-c", "stty cooked echo </dev/tty").inheritIO().start().waitFor();
     }
+    
+    protected abstract void printMenu();
 }
