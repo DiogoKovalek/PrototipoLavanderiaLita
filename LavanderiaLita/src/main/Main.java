@@ -14,6 +14,7 @@ public class Main {
         // -h -> Mostra os Comandos
         // -c <Username> -p <Senha> -> Loga como cliente
         // -c <Username> --ask -> Loga como cliente depois de perguntar a senha
+        // -s -> Cadastrar cliente\n
         // -f <Username> -p <Senha> -> Loga como funcioanário
         // -f <Username> --ask -> Loga como funcionário depois de perguntar a senha
         
@@ -30,6 +31,7 @@ public class Main {
                 System.out.println("-h -> Mostra os Comandos\n" +
                                    "-c <Username> -p <Senha> -> Loga como cliente\n" +
                                    "-c <Username> --ask -> Loga como cliente depois de perguntar a senha\n" +
+                                   "-s -> Cadastrar cliente\n" +
                                    "-f <Username> -p <Password> -> Loga como funcioanário\n" +
                                    "-f <Username> --ask -> Loga como funcionário depois de perguntar a senha");
                 break;
@@ -79,8 +81,11 @@ public class Main {
                 screen = new ScreenFuncionario();
                 screen.initScreen(new String[] {username});
                 break;
+            case "-s":
+                break;
             default:
-                throw new AssertionError();
+                System.out.println("Ops, alguma coisa está errada, de o comando -h para listar os comandos");
+                break;
         }
     }
     

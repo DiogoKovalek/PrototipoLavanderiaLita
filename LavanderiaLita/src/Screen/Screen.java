@@ -64,6 +64,7 @@ public abstract class Screen {
         System.out.println("\r|    * | |      | |     | |     | |___| |  *   |");
         System.out.println("\r|      | |___   | |  *  | |     |  ___  |      |");
         System.out.println("\r|      |_____|  |_|     |_|  *  |_|   |_|      |");
+        System.out.println("\r|    *                                         |");
         System.out.println("\r|>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|");
     }
     
