@@ -9,7 +9,7 @@ import Entidade.Cliente;
 public class ClienteDao extends DaoBehavior<Cliente, Integer>{
     
     public ClienteDao(){
-        savePath = "src/txt/Cliente.txt";
+        savePath = "../saves/Cliente.txt";
     }
     
     @Override
@@ -33,15 +33,15 @@ public class ClienteDao extends DaoBehavior<Cliente, Integer>{
     @Override
     protected Cliente createObjectFromString(String str) {
         String[] aux = str.split(";");
-        //Cliente c = new Cliente(Integer.parseInt(aux[0]), aux[1], aux[2], aux[3], aux[4], aux[5]);
-        Cliente c = new Cliente();
-        c.setId(Integer.parseInt(aux[0]));
-        c.setNome(aux[1]);
-        c.setCpf_cnpj(aux[2]);
-        c.setEndereco(aux[3]);
-        c.setEmail(aux[4]);
-        c.setSenha(aux[5]);
-        return c;
+        //Cliente t = new Cliente(Integer.parseInt(aux[0]), aux[1], aux[2], aux[3], aux[4], aux[5]);
+        Cliente t = new Cliente();
+        t.setId(Integer.parseInt(aux[0]));
+        t.setNome(aux[1]);
+        t.setCpf_cnpj(aux[2]);
+        t.setEndereco(aux[3]);
+        t.setEmail(aux[4]);
+        t.setSenha(aux[5]);
+        return t;
     }
     
     
