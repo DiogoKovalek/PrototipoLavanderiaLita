@@ -2,3 +2,4 @@
 2;Eduardo;321;São Paulo;eduardo@;67890
 3;Pedro;555;Campo Mourão;pedro@;pedroGamer123
 4;Myskiw;999;Campo Mourão;myskiw@;selva!
+5;Lucio;121314;Araucaria;valentin@;POO

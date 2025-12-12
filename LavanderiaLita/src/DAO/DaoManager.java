@@ -6,7 +6,7 @@ package DAO;
  */
 public class DaoManager {
     
-    private ClienteDao clienteDao;
+    private static ClienteDao clienteDao;
     
     public DaoManager(){
         initDaos();
@@ -17,7 +17,7 @@ public class DaoManager {
         clienteDao.initDao();
     }
     
-    private void endDaos(){
+    public void endDaos(){
         clienteDao.closeDao();
     }
     

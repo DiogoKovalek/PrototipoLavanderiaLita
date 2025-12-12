@@ -33,7 +33,6 @@ public class ClienteDao extends DaoBehavior<Cliente, Integer>{
     @Override
     protected Cliente createObjectFromString(String str) {
         String[] aux = str.split(";");
-        //Cliente t = new Cliente(Integer.parseInt(aux[0]), aux[1], aux[2], aux[3], aux[4], aux[5]);
         Cliente t = new Cliente();
         t.setId(Integer.parseInt(aux[0]));
         t.setNome(aux[1]);
@@ -43,6 +42,4 @@ public class ClienteDao extends DaoBehavior<Cliente, Integer>{
         t.setSenha(aux[5]);
         return t;
     }
-    
-    
 }

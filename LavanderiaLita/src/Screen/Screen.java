@@ -3,18 +3,23 @@ package Screen;
 import static Screen.ScreenCliente.disableRawMode;
 import static Screen.ScreenCliente.enableRawMode;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  *
  * @author kovalek
  */
 public abstract class Screen {
-
+    
     protected String[] options = {};
     protected Runnable[] comandsOptions;
     protected int numOp = 0;
 
     protected SCREENMODE screenMode = SCREENMODE.SELECT;
+    
+    protected boolean isRunScreen = true;
+    
+    private Scanner sc = new Scanner(System.in);
 
     protected void abliteRawMode() {
         try {
@@ -43,32 +48,12 @@ public abstract class Screen {
     }
 
     private void runScreenModeSelect() throws IOException {
-        while (true) {
-            printMenu();
-            int key = System.in.read(); // Leitura do teclado
-            // seta cima e baixo sao caracteres especiais
-            // seta cima  -> 27, 91, 65
-            // seta baixo -> 27, 91, 66
-            if(key == 27){ //Caractere Especial
-                if(System.in.available() > 0 && System.in.read() == 91){
-                    int arrow = System.in.read();
-                    if(arrow == 65){ //UP
-                        int next = numOp - 1;
-                        numOp = next < 0 ? options.length - 1 : next;
-                    }else if(arrow == 66){ //Down
-                        int next = numOp + 1;
-                        numOp = next > options.length - 1 ? 0 : next;
-                    }
-                }
-            }else if(key == 10 || key == 13){ // ENTER
-                executeComand();
-                break;
-            }
-            
-            /*
+        printMenu();
+        int next;
+        while(isRunScreen){
             KEYBOARD key = readKey();
-            int next;
-            if(key != KEYBOARD.DEFAULT){
+            
+            if (key != KEYBOARD.DEFAULT) {
                 switch (key) {
                     case KEY_UP:
                         next = numOp - 1;
@@ -80,21 +65,45 @@ public abstract class Screen {
                         break;
                     case KEY_ENTER:
                         executeComand();
-                        System.out.println("Executa comando 1");
+                        isRunScreen = false;
                         break;
                     case KEY_ESC:
                         executeComand();
-                        System.out.println("Executa comando 2");
+                        isRunScreen = false;
                         break;
                 }
                 printMenu();
             }
-            */
         }
     }
 
-    private void runScreenModeCRUD() {
-
+    private void runScreenModeCRUD() throws IOException {
+        printMenu();
+        int next;
+        while(isRunScreen){
+            KEYBOARD key = readKey();
+            
+            if (key != KEYBOARD.DEFAULT) {
+                switch (key) {
+                    case KEY_UP:
+                        next = numOp - 1;
+                        numOp = next < 0 ? options.length - 1 : next;
+                        break;
+                    case KEY_DOWN:
+                        next = numOp + 1;
+                        numOp = next > options.length - 1 ? 0 : next;
+                        break;
+                    case KEY_ENTER:
+                        executeComand();
+                        break;
+                    case KEY_ESC:
+                        executeComand();
+                        isRunScreen = false;
+                        break;
+                }
+                printMenu();
+            }
+        }
     }
 
     private void executeComand() {
@@ -119,14 +128,35 @@ public abstract class Screen {
                     }
                 }
                 return KEYBOARD.KEY_ESC;
-            }
-            else if (ch == 10 || ch == 13) {
+            } else if (ch == 10 || ch == 13) {
                 return KEYBOARD.KEY_ENTER;
             }
         }
         return KEYBOARD.DEFAULT;
     }
+    
+    protected void printField(String text, int index) {
+        if (index == numOp) System.out.println("\r>>> " + text);
+        else System.out.println("\r    " + text);
+    }
 
+    protected String readLine(String msg) {
+        disableRawModeSilently(); // para usar Scanner normalmente
+
+        System.out.print("\r:" + msg);
+        String value = sc.nextLine();
+
+        enableRawModeSilently(); // volta ao modo raw
+        return value;
+    }
+    
+    protected void printErrorSatyEnter(String msg){
+        System.out.println("\r" + msg);
+        System.out.println("\rPrescione enter para continuar");
+        
+        sc.next();
+    }
+    
     protected void logoLita() {
         System.out.println("\r|>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|");
         System.out.println("\r|       _        _  * _______    _______     * |");
@@ -146,6 +176,20 @@ public abstract class Screen {
 
     static void disableRawMode() throws IOException, InterruptedException {
         new ProcessBuilder("sh", "-c", "stty cooked echo </dev/tty").inheritIO().start().waitFor();
+    }
+
+    private void disableRawModeSilently() {
+        try {
+            disableRawMode();
+        } catch (Exception ignored) {
+        }
+    }
+
+    private void enableRawModeSilently() {
+        try {
+            enableRawMode();
+        } catch (Exception ignored) {
+        }
     }
 
     protected abstract void printMenu();

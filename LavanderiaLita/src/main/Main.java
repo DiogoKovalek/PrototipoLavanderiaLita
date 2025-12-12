@@ -1,5 +1,7 @@
 package main;
 
+import DAO.DaoManager;
+import Screen.CRUDScreenCliente;
 import Screen.IScreen;
 import Screen.ScreenCliente;
 import Screen.ScreenFuncionario;
@@ -10,6 +12,9 @@ import java.util.Scanner;
  * @author kovalek
  */
 public class Main {
+    
+    public static final DaoManager daoManager = new DaoManager();
+    
     public static void main(String[] args) {
         // -h -> Mostra os Comandos
         // -c <Username> -p <Senha> -> Loga como cliente
@@ -82,11 +87,15 @@ public class Main {
                 screen.initScreen(new String[] {username});
                 break;
             case "-s":
+                screen = new CRUDScreenCliente();
+                screen.initScreen(args);
                 break;
             default:
                 System.out.println("Ops, alguma coisa está errada, de o comando -h para listar os comandos");
                 break;
         }
+        //Finaliza e salva todos os DAOS
+        daoManager.endDaos();
     }
     
     

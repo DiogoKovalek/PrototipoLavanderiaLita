@@ -30,13 +30,14 @@ public class ScreenCliente extends Screen implements IScreen{
         System.out.flush();
         logoLita();
         System.out.println("");
-        System.out.println("\r=======================================================");
+        System.out.println("\r================================================");
         System.out.println("\r   *Seja bem vindo %s".formatted(username));
         System.out.println("\r   *Escolha a opção");
-        System.out.println("\r=======================================================");
+        System.out.println("\r================================================");
         for(int i = 0; i < options.length; i++){
             if(numOp == i) System.out.println("\r>>> " + options[i]);
             else System.out.println("\r    " + options[i]);
+            printField(username, i);
         }
     }
     
