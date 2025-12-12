@@ -24,7 +24,12 @@ public class ClienteDao extends DaoBehavior<Cliente, Integer>{
         }
         return null;
     }
-
+    
+    @Override
+    public String listarAtributos() {
+        return "ID;Nome;CPF/CNPJ;Endereço;e-mail;Senha";
+    }
+    
     @Override
     protected Cliente createObjectFromString(String str) {
         String[] aux = str.split(";");

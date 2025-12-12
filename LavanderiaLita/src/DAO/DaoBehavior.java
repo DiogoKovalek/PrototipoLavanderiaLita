@@ -18,6 +18,7 @@ public abstract class DaoBehavior <T, SearchKey>{
     
     
     //Control Status ==============
+    //Para abrir e salvar estados em outras classes
     public void initDao(){
         openSave();
     }
@@ -49,6 +50,11 @@ public abstract class DaoBehavior <T, SearchKey>{
         }
         return ls;
     }
+    
+    public abstract String listarAtributos(); 
+    //id;nome;endereco
+    //Serve para pegar o nome dos atributos para facilitar no CRUD
+    //Nao prescisa ser como esta no nome, Isso 'e o que o usuario vai ver
     //===============================================
     
     
