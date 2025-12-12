@@ -20,7 +20,7 @@ public class ScreenCliente extends Screen implements IScreen{
             this::comandTest
         };
         
-        username = args[0];
+        username = args[1];
         
         abliteRawMode();
     }

@@ -1,14 +1,16 @@
 package main;
 
 import DAO.DaoManager;
+import Entidade.Cliente;
+import Entidade.Operador;
 import Screen.CRUDScreenCliente;
 import Screen.IScreen;
 import Screen.ScreenCliente;
-import Screen.ScreenFuncionario;
+import Screen.ScreenOperador;
 import java.util.Scanner;
 
 /**
- *
+ *3
  * @author kovalek
  */
 public class Main {
@@ -58,10 +60,15 @@ public class Main {
                 }
                 // Check User
                 // Method for search the user
+                Cliente c = daoManager.getClienteDao().getUserPassword(username, password);
                 
-                //Before aproved
-                screen = new ScreenCliente();
-                screen.initScreen(new String[] {username});
+                if(c != null){
+                    //Before aproved
+                    screen = new ScreenCliente();
+                    screen.initScreen(new String[] {username});
+                }else{
+                    System.out.println("Senha ouusuario invalido, tente novamente");
+                }
                 break;
             case "-f":
                 username = args[1];
@@ -80,11 +87,15 @@ public class Main {
                     break;
                 }
                 // Check User
-                // Method for search the user
+                Operador o = daoManager.getOperadorDao().getUserPassword(username, password);
                 
-                //Before aproved
-                screen = new ScreenFuncionario();
-                screen.initScreen(new String[] {username});
+                if(o != null){
+                    //Before aproved
+                    screen = new ScreenOperador();
+                    screen.initScreen(new String[] {String.valueOf(o.getId()), username});
+                }else{
+                    System.out.println("Senha ou usuario invalidos, tente novamente");
+                }
                 break;
             case "-s":
                 screen = new CRUDScreenCliente();

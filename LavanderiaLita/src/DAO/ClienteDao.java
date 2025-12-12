@@ -42,4 +42,14 @@ public class ClienteDao extends DaoBehavior<Cliente, Integer>{
         t.setSenha(aux[5]);
         return t;
     }
+    
+    public Cliente getUserPassword(String user, String password){
+        for(int i = 0; i < listaObjetos.size(); i++){
+            Cliente c = listaObjetos.get(i);
+            if(c.getNome().equals(user) && c.getSenha().equals(password)){
+                return c;
+            }
+        }
+        return null;
+    }
 }

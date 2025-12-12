@@ -4,7 +4,7 @@ package Screen;
  *
  * @author kovalek
  */
-public class ScreenFuncionario extends Screen implements IScreen{
+public class ScreenOperador extends Screen implements IScreen{
 
     private String username = "";
     @Override

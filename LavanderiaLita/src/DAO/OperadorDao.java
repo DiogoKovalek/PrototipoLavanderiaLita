@@ -1,7 +1,7 @@
 package DAO;
 
 import Entidade.Operador;
-
+import enums.TipoOperador;
 /**
  *
  * @author Eduardo
@@ -42,12 +42,21 @@ public class OperadorDao extends DaoBehavior<Operador, Integer>{
         t.setEmail(aux[4]);
         t.setSenha(aux[5]);
         t.setSalario(Float.parseFloat(aux[6]));
-        t.setTipo(aux[7]);
+        t.setTipo(TipoOperador.valueOf(aux[7]));
         t.setContaParaPagamento(aux[8]);
         t.setExpediente(aux[9]);
         t.setDiasEmQueTrabalha(aux[10]);
         return t;
     }
     
-    
+    public Operador getUserPassword(String user, String password){
+        for(int i = 0; i < listaObjetos.size(); i++){
+            Operador o = listaObjetos.get(i);
+            if(o.getNome().equals(user) && o.getSenha().equals(password)){
+                return o;
+            }
+        }
+        return null;
+    }
+
 }

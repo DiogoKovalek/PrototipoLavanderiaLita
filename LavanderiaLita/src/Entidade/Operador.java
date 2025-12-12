@@ -1,5 +1,7 @@
 package Entidade;
 
+import enums.TipoOperador;
+
 /**
  *
  * @author kovalek
@@ -13,7 +15,7 @@ public class Operador {
     private String email;
     private String senha;
     private float salario;
-    private String tipo;
+    private TipoOperador tipo;
     private String contaParaPagamento;
     private String expediente;
     private String diasEmQueTrabalha;
@@ -21,7 +23,7 @@ public class Operador {
     public Operador(){
         
     }
-    public Operador(int id, String nome, String cpf, String telefone, String email, String senha, float salario, String tipo, String contaParaPagamento, String expediente, String diasEmQueTrabalha){
+    public Operador(int id, String nome, String cpf, String telefone, String email, String senha, float salario, TipoOperador tipo, String contaParaPagamento, String expediente, String diasEmQueTrabalha){
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -91,11 +93,11 @@ public class Operador {
         this.salario = salario;
     }
 
-    public String getTipo() {
+    public TipoOperador getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoOperador tipo) {
         this.tipo = tipo;
     }
 
@@ -130,6 +132,4 @@ public class Operador {
     public String toString() {
         return id + ";" + nome + ";" + cpf + ";" + telefone + ";" + email + ";" + senha + ";" + salario + ";" + tipo + ";" + contaParaPagamento + ";" + expediente + ";" + diasEmQueTrabalha;
     }
-    
-    
 }
