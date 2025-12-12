@@ -1,6 +1,7 @@
 package DAO;
 
 import Entidade.Utilizacao;
+import main.Main;
 
 /**
  *
@@ -36,9 +37,9 @@ public class UtilizacaoDao extends DaoBehavior<Utilizacao, Integer>{
 
         Utilizacao t = new Utilizacao();
         t.setId(Integer.parseInt(aux[0]));
-        t.setCliente(aux[1]);
-        t.setOperador(aux[2]);
-        t.setDocumentoDePagamento(aux[3]);
+        t.setCliente(Main.daoManager.getClienteDao().retrive((int) Integer.parseInt(aux[1])));
+        t.setOperador(Main.daoManager.getOperadorDao().retrive((int) Integer.parseInt(aux[2])));
+        t.setDocumentoDePagamento(Main.daoManager.getDocumentoDePagamentoDao().retrive((int) Integer.parseInt(aux[3])));
         t.setValorBruto(Float.parseFloat(aux[4]));
         t.setValorDeDesconto(Float.parseFloat(aux[5]));
         t.setValorTotal(Float.parseFloat(aux[6]));

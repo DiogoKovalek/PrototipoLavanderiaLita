@@ -6,24 +6,49 @@ package Entidade;
  */
 public class Saldo {
     
+    private int idCliente;
     private int quantidadeDeLavagens;
     private int quantidadeDeSecagens;
-    private Cliente cliente;
+    
     
     public Saldo(){
         
     }
-    public Saldo( int quantidadeDeLavagens, int quantidadeDeSecagens, Cliente cliente){
+    public Saldo(int idCliente, int quantidadeDeLavagens, int quantidadeDeSecagens){
+        this.idCliente = idCliente;
         this.quantidadeDeLavagens = quantidadeDeLavagens;
         this.quantidadeDeSecagens = quantidadeDeSecagens;
-        this.cliente = cliente;
+    }
+
+    public int getQuantidadeDeLavagens() {
+        return quantidadeDeLavagens;
+    }
+
+    public void setQuantidadeDeLavagens(int quantidadeDeLavagens) {
+        this.quantidadeDeLavagens = quantidadeDeLavagens;
+    }
+
+    public int getQuantidadeDeSecagens() {
+        return quantidadeDeSecagens;
+    }
+
+    public void setQuantidadeDeSecagens(int quantidadeDeSecagens) {
+        this.quantidadeDeSecagens = quantidadeDeSecagens;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     
 
     @Override
     public String toString() {
-        return quantidadeDeLavagens + ";" + quantidadeDeSecagens + ";" + cliente;
+        return idCliente + ";" + quantidadeDeLavagens + ";" + quantidadeDeSecagens + ";";
     }
     
     

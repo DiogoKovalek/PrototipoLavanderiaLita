@@ -1,6 +1,7 @@
 package DAO;
 
 import Entidade.Feedback;
+import main.Main;
 
 /**
  *
@@ -40,8 +41,8 @@ public class FeedbackDao extends DaoBehavior<Feedback, Integer>{
         t.setResposta(aux[2]);
         t.setData(aux[3]);
         t.setHora(aux[4]);
-        t.setCliente(aux[5]);
-        t.setAdministrador(aux[6]);
+        t.setCliente(Main.daoManager.getClienteDao().retrive((int) Integer.parseInt(aux[5])));
+        t.setOperador(Main.daoManager.getOperadorDao().retrive((int) Integer.parseInt(aux[6])));
         return t;
     }
     

@@ -29,6 +29,70 @@ public class Maquina {
         this.cadastradoPor = cadastradoPor;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public float getValorDeAquisicao() {
+        return valorDeAquisicao;
+    }
+
+    public void setValorDeAquisicao(float valorDeAquisicao) {
+        this.valorDeAquisicao = valorDeAquisicao;
+    }
+
+    public String getDataDeAquisicao() {
+        return dataDeAquisicao;
+    }
+
+    public void setDataDeAquisicao(String dataDeAquisicao) {
+        this.dataDeAquisicao = dataDeAquisicao;
+    }
+
+    public String getDataDeInativacao() {
+        return dataDeInativacao;
+    }
+
+    public void setDataDeInativacao(String dataDeInativacao) {
+        this.dataDeInativacao = dataDeInativacao;
+    }
+
+    public boolean isPodeOperar() {
+        return podeOperar;
+    }
+
+    public void setPodeOperar(boolean podeOperar) {
+        this.podeOperar = podeOperar;
+    }
+
+    public Operador getCadastradoPor() {
+        return cadastradoPor;
+    }
+
+    public void setCadastradoPor(Operador cadastradoPor) {
+        this.cadastradoPor = cadastradoPor;
+    }
+
     
 
     @Override

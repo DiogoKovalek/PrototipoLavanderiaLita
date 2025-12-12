@@ -1,6 +1,7 @@
 package DAO;
 
 import Entidade.Maquina;
+import main.Main;
 
 /**
  *
@@ -41,8 +42,8 @@ public class MaquinaDao extends DaoBehavior<Maquina, Integer>{
         c.setValorDeAquisicao(Float.parseFloat(aux[3]));
         c.setDataDeAquisicao(aux[4]);
         c.setDataDeInativacao(aux[5]);
-        c.setPodeOperar(aux[6]);
-        c.setCadastradoPor(aux[7]);
+        c.setPodeOperar(Boolean.parseBoolean(aux[6]));
+        c.setCadastradoPor(Main.daoManager.getOperadorDao().retrive((int) Integer.parseInt(aux[7])));
         return c;
     }
     

@@ -6,7 +6,7 @@ import Entidade.Servico;
  *
  * @author Eduardo
  */
-public class ServicoDao extends DaoBehavior<Servico, Integer>{
+public class ServicoDao extends DaoBehavior<Servico, String>{
     
     public ServicoDao(){
         savePath = "../saves/Servico.txt";
@@ -14,13 +14,13 @@ public class ServicoDao extends DaoBehavior<Servico, Integer>{
     
     @Override
     public void create(Servico t) {
-        if(retrive(t.getId()) == null) listaObjetos.add(t);
+        if(retrive(t.getNome()) == null) listaObjetos.add(t);
     }
     
     @Override
-    public Servico retrive(Integer key) {
+    public Servico retrive(String key) {
         for(int i = 0; i < listaObjetos.size(); i++){
-            if(listaObjetos.get(i).getId() == key) return listaObjetos.get(i);
+            if(listaObjetos.get(i).getNome()== key) return listaObjetos.get(i);
         }
         return null;
     }

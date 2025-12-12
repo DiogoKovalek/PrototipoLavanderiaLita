@@ -1,6 +1,7 @@
 package DAO;
 
 import Entidade.ItemDeServico;
+import main.Main;
 
 /**
  *
@@ -36,13 +37,13 @@ public class ItemDeServicoDao extends DaoBehavior<ItemDeServico, Integer>{
         //ItemDeServico t = new ItemDeServico(Integer.parseInt(aux[0]), aux[1], aux[2], aux[3], aux[4], aux[5], aux[6], aux[7], aux[8]);
         ItemDeServico t = new ItemDeServico();
         t.setId(Integer.parseInt(aux[0]));
-        t.setTipoServico(aux[1]);
+        t.setServico(Main.daoManager.getServicoDao().retrive(aux[1]));
         t.setEstado(aux[2]);
-        t.setUsaMaquina(aux[3]);
-        t.setUsaSaldo(aux[4]);
-        t.setSaldo(aux[5]);
-        t.setMaquina(aux[6]);
-        t.setHorarioDeInicio(aux[7]);
+        t.setUsaMaquina(Boolean.parseBoolean(aux[3]));
+        t.setUsaSaldo(Boolean.parseBoolean(aux[4]));
+        t.setSaldo(Main.daoManager.getSaldoDao().retrive((int) Integer.parseInt(aux[5])));
+        t.setMaquina(Main.daoManager.getMaquinaDao().retrive((int) Integer.parseInt(aux[6])));
+        t.setHoraDeInicio(aux[7]);
         t.setHoraDoFim(aux[8]);
         return t;
     }

@@ -1,6 +1,7 @@
 package DAO;
 
 import Entidade.ItemDePacote;
+import main.Main;
 
 /**
  *
@@ -39,7 +40,7 @@ public class ItemDePacoteDao extends DaoBehavior<ItemDePacote, Integer>{
         t.setQuantidade(Integer.parseInt(aux[1]));
         t.setValorTotal(Float.parseFloat(aux[2]));
         t.setData(aux[3]);
-        t.setPacote(aux[4]);
+        t.setPacote(Main.daoManager.getPacoteDao().retrive((int) Integer.parseInt(aux[4])));
         return t;
     }
     

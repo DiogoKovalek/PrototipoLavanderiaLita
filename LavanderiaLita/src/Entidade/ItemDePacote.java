@@ -25,6 +25,54 @@ public class ItemDePacote {
         this.documentoDePagamento = documentoDePagamento;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public float getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(float valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public Pacote getPacote() {
+        return pacote;
+    }
+
+    public void setPacote(Pacote pacote) {
+        this.pacote = pacote;
+    }
+
+    public DocumentoDePagamento getDocumentoDePagamento() {
+        return documentoDePagamento;
+    }
+
+    public void setDocumentoDePagamento(DocumentoDePagamento documentoDePagamento) {
+        this.documentoDePagamento = documentoDePagamento;
+    }
+
     
 
     @Override

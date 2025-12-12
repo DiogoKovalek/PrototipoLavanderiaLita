@@ -37,7 +37,7 @@ public class OperadorDao extends DaoBehavior<Operador, Integer>{
         Operador t = new Operador();
         t.setId(Integer.parseInt(aux[0]));
         t.setNome(aux[1]);
-        t.setCPF(aux[2]);
+        t.setCpf(aux[2]);
         t.setTelefone(aux[3]);
         t.setEmail(aux[4]);
         t.setSenha(aux[5]);
