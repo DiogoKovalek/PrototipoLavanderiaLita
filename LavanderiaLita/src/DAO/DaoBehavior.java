@@ -12,8 +12,23 @@ import java.util.List;
 public abstract class DaoBehavior <T, SearchKey>{
     
     protected List<T> listaObjetos = new ArrayList<T>();
-    private ManipulaArquivo mp;
+    private ManipulaArquivo mp = new ManipulaArquivo();
     
+    protected String savePath = "";
+    
+    
+    //Control Status ==============
+    public void initDao(){
+        openSave();
+    }
+    public void closeDao(){
+        closeSave();
+    }
+    //=============================
+    
+    
+    
+    // CRUD =======================================
     public abstract void create(T t);
     
     public abstract T retrive(SearchKey key);
@@ -34,4 +49,21 @@ public abstract class DaoBehavior <T, SearchKey>{
         }
         return ls;
     }
+    //===============================================
+    
+    
+    // Load and Save ================================
+    protected abstract T createObjectFromString(String str);
+    
+    private void openSave(){
+        List<String> ls = mp.abrirArquivo(savePath);
+        for(String s : ls){
+            listaObjetos.add(createObjectFromString(s));
+        }
+    }
+    
+    private void closeSave(){
+        mp.salvarArquivo(savePath, listar());
+    }
+    //================================================
 }

@@ -9,7 +9,7 @@ import Entidade.Cliente;
 public class ClienteDao extends DaoBehavior<Cliente, Integer>{
     
     public ClienteDao(){
-        
+        savePath = "src/txt/Cliente.txt";
     }
     
     @Override
@@ -24,26 +24,19 @@ public class ClienteDao extends DaoBehavior<Cliente, Integer>{
         }
         return null;
     }
-    
-    public static void main(String[] args){
-        ClienteDao clienteDao = new ClienteDao();
-        Cliente c = new Cliente(1, "Diogo", "123", "Roncador", "diogo@", "12345");
-        clienteDao.create(c);
-        c = new Cliente(2, "Caralho", "321", "Pira no Pau", "eduardo@", "67890");
-        clienteDao.create(c);
-        c = new Cliente(3, "Pedro", "69", "Rebola", "bigass@", "p1k4<3");
-        clienteDao.create(c);
-        c = new Cliente(4, "Neskiwki", "999", "Soldador", "soladado16@", "selva!");
-        clienteDao.create(c);
-        
-        
-        c = clienteDao.retrive(2);
-        Cliente cNew = new Cliente(c.getId(), "Eduardo", c.getCpf_cnpj(), c.getEndereco(), c.getEmail(), c.getSenha());
-        clienteDao.update(c, cNew);
-        for(String a:clienteDao.listar()){
-            System.out.println(a);
-        }
-        
+
+    @Override
+    protected Cliente createObjectFromString(String str) {
+        String[] aux = str.split(";");
+        //Cliente c = new Cliente(Integer.parseInt(aux[0]), aux[1], aux[2], aux[3], aux[4], aux[5]);
+        Cliente c = new Cliente();
+        c.setId(Integer.parseInt(aux[0]));
+        c.setNome(aux[1]);
+        c.setCpf_cnpj(aux[2]);
+        c.setEndereco(aux[3]);
+        c.setEmail(aux[4]);
+        c.setSenha(aux[5]);
+        return c;
     }
     
     
