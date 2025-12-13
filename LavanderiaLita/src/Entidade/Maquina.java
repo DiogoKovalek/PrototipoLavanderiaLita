@@ -1,5 +1,8 @@
 package Entidade;
 
+import enums.EstadoMaquina;
+import enums.TipoMaquina;
+
 /**
  *
  * @author kovalek
@@ -7,8 +10,8 @@ package Entidade;
 public class Maquina {
     
     private int id;
-    private String tipo;
-    private String estado;
+    private TipoMaquina tipo;
+    private EstadoMaquina estado;
     private float valorDeAquisicao;
     private String dataDeAquisicao;
     private String dataDeInativacao;
@@ -18,7 +21,7 @@ public class Maquina {
     public Maquina(){
         
     }
-    public Maquina(int id, String tipo, String estado, float valorDeAquisicao, String dataDeAquisicao, String dataDeInativacao, boolean podeOperar, Operador cadastradoPor){
+    public Maquina(int id, TipoMaquina tipo, EstadoMaquina estado, float valorDeAquisicao, String dataDeAquisicao, String dataDeInativacao, boolean podeOperar, Operador cadastradoPor){
         this.id = id;
         this.tipo = tipo;
         this.estado = estado;
@@ -37,19 +40,19 @@ public class Maquina {
         this.id = id;
     }
 
-    public String getTipo() {
+    public TipoMaquina getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoMaquina tipo) {
         this.tipo = tipo;
     }
 
-    public String getEstado() {
+    public EstadoMaquina getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EstadoMaquina estado) {
         this.estado = estado;
     }
 

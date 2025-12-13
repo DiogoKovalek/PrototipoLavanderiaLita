@@ -17,6 +17,7 @@ public class DaoManager {
     private static SaldoDao saldoDao;
     private static ServicoDao servicoDao;
     private static UtilizacaoDao utilizacaoDao;
+    private static DanoDao danoDao;
     
     public DaoManager(){
         initDaos();
@@ -55,7 +56,9 @@ public class DaoManager {
 
         utilizacaoDao = new UtilizacaoDao();
         utilizacaoDao.initDao();
-
+        
+        danoDao = new DanoDao();
+        danoDao.initDao();
     }
     
     public void endDaos(){
@@ -70,7 +73,7 @@ public class DaoManager {
         saldoDao.closeDao();
         servicoDao.closeDao();
         utilizacaoDao.closeDao();
-
+        danoDao.closeDao();
     }
     
     public ClienteDao getClienteDao(){
@@ -115,6 +118,10 @@ public class DaoManager {
 
     public static UtilizacaoDao getUtilizacaoDao() {
         return utilizacaoDao;
+    }
+    
+    public static DanoDao getDanoDao(){
+        return danoDao;
     }
     
 }

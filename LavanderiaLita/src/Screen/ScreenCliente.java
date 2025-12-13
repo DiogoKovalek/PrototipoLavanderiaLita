@@ -10,14 +10,11 @@ public class ScreenCliente extends Screen implements IScreen{
     
     @Override
     public void initScreen(String[] args) {
-        options = new String[] {"Option 1", "Option 2", "Option 3", "Option 4", "Exit"};
+        options = new String[] {"Feedback", "Exit"};
         
         comandsOptions = new Runnable[] {
-            this::comandTest,
-            this::comandTest,
-            this::comandTest,
-            this::comandTest,
-            this::comandTest
+            this::feedback,
+            this::exit
         };
         
         username = args[1];
@@ -41,11 +38,13 @@ public class ScreenCliente extends Screen implements IScreen{
         }
     }
     
-    private void comandTest(){
+    private void feedback(){
         System.out.println("\r Teste");
     }
     
-    
+    private void exit(){
+        isRunScreen = false;
+    }
     
     
 }

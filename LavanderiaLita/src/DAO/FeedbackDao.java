@@ -15,6 +15,8 @@ public class FeedbackDao extends DaoBehavior<Feedback, Integer>{
     
     @Override
     public void create(Feedback t) {
+        int maxId = listaObjetos.size();
+        t.setId(maxId);
         if(retrive(t.getId()) == null) listaObjetos.add(t);
     }
     

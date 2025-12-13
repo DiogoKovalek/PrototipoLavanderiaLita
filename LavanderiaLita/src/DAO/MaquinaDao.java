@@ -1,6 +1,8 @@
 package DAO;
 
 import Entidade.Maquina;
+import enums.EstadoMaquina;
+import enums.TipoMaquina;
 import main.Main;
 
 /**
@@ -37,8 +39,8 @@ public class MaquinaDao extends DaoBehavior<Maquina, Integer>{
         //Maquina c = new Maquina(Integer.parseInt(aux[0]), aux[1], aux[2], aux[3], aux[4], aux[5], aux[6], aux[7]);
         Maquina c = new Maquina();
         c.setId(Integer.parseInt(aux[0]));
-        c.setTipo(aux[1]);
-        c.setEstado(aux[2]);
+        c.setTipo(TipoMaquina.valueOf(aux[1]));
+        c.setEstado(EstadoMaquina.valueOf(aux[2]));
         c.setValorDeAquisicao(Float.parseFloat(aux[3]));
         c.setDataDeAquisicao(aux[4]);
         c.setDataDeInativacao(aux[5]);
