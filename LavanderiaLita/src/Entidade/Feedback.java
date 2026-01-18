@@ -87,7 +87,8 @@ public class Feedback {
 
     @Override
     public String toString() {
-        return id + ";" + mensagem + ";" + resposta + ";" + data + ";" + hora + ";" + cliente.getId() + ";" + operador.getId();
+        String opId = operador != null ? String.valueOf(operador.getId()):" ";
+        return id + ";" + mensagem + ";" + resposta + ";" + data + ";" + hora + ";" + cliente.getId() + ";" + opId;
     }
     
     

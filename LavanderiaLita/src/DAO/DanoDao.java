@@ -7,7 +7,10 @@ import main.Main;
  * @author kovalek
  */
 public class DanoDao extends DaoBehavior<Dano, Integer>{
-
+    
+    public DanoDao(){
+        savePath = "../saves/Dano.txt";
+    }
     @Override
     public void create(Dano t) {
         if(retrive(t.getId()) == null) listaObjetos.add(t);

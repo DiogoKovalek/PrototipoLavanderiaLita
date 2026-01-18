@@ -6,9 +6,8 @@ import DAO.FeedbackDao;
 import Entidade.Cliente;
 import Entidade.Feedback;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import javax.swing.text.DateFormatter;
 import main.Main;
 
 /**
@@ -26,7 +25,7 @@ public class FeedbackManager {
         FeedbackDao feedbackDao = daoManager.getFeedbackDao();
         Feedback feedback = new Feedback();
         
-        LocalDate now = LocalDate.now();
+        LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("HH:mm:ss");
         

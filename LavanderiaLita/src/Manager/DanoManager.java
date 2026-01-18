@@ -7,6 +7,7 @@ import Entidade.Dano;
 import Entidade.Maquina;
 import enums.EstadoMaquina;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import main.Main;
 
@@ -31,7 +32,7 @@ public class DanoManager {
         DanoDao daoDano = daoManager.getDanoDao();
         Dano dano = new Dano();
         
-        LocalDate now = LocalDate.now();
+        LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("HH:mm:ss");
         

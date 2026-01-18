@@ -10,10 +10,13 @@ public class ScreenCliente extends Screen implements IScreen{
     
     @Override
     public void initScreen(String[] args) {
-        options = new String[] {"Feedback", "Exit"};
+        options = new String[] {"Opcao1", "Opcao2", "Opcao3", "Opcao4", "Exit"};
         
         comandsOptions = new Runnable[] {
-            this::feedback,
+            this::teste,
+            this::teste,
+            this::teste,
+            this::teste,
             this::exit
         };
         
@@ -34,11 +37,10 @@ public class ScreenCliente extends Screen implements IScreen{
         for(int i = 0; i < options.length; i++){
             if(numOp == i) System.out.println("\r>>> " + options[i]);
             else System.out.println("\r    " + options[i]);
-            printField(username, i);
         }
     }
     
-    private void feedback(){
+    private void teste(){
         System.out.println("\r Teste");
     }
     
